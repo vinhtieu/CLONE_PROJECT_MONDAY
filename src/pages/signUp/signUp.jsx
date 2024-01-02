@@ -27,17 +27,17 @@ export default function SignUp() {
               <div className="h-1/2 border border-t-[#d0d4e4] w-full"></div>
             </div>
             <Input className="h-10" placeholder="name@company.com"></Input>
-            <Button type="primary" className="w-full bg-[#0073ea] h-10">
+            <Button type="primary" className="w-full bg-[#1f76c2] h-10">
               Continue
             </Button>
             <div>
               <span>By proceeding, you agree to the</span>
               <div>
-                <a href="#!" className="text-[#5e9cd3] hover:underline">
+                <a href="#!" className="text-[#1f76c2] hover:underline">
                   Terms of Service
                 </a>
                 <span className="px-1">and</span>
-                <a href="#!" className="text-[#5e9cd3] hover:underline">
+                <a href="#!" className="text-[#1f76c2] hover:underline">
                   Privacy Policy
                 </a>
               </div>
