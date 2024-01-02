@@ -3,8 +3,8 @@ import React from "react";
 
 export default function SignUp() {
   return (
-    <div className="grid h-screen grid-flow-col">
-      <div className="flex flex-col h-full col-auto">
+    <div className="grid h-screen grid-flow-col grid-cols-[auto_40%]">
+      <div className="flex flex-col h-full">
         <div className="flex-1 text-center w-[25rem] mx-auto flex items-center justify-center flex-col">
           <span className="block mb-2 text-[32px] leading-10 font-medium">
             Welcome to monday.com
@@ -51,7 +51,13 @@ export default function SignUp() {
           </a>
         </div>
       </div>
-      <div className="col-[40%] bg-red-500"></div>
+      <figure className="overflow-hidden bg-red-500 ">
+        <img
+          src="https://dapulse-res.cloudinary.com/image/upload/monday_platform/signup/signup-right-side-assets-new-flow/welcome-to-monday.png"
+          alt=""
+          className="object-cover w-full h-full p-0 m-0"
+        />
+      </figure>
     </div>
   );
 }
