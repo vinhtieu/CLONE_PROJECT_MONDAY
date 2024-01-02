@@ -3,12 +3,12 @@ import React from "react";
 
 export default function SignUp() {
   return (
-    <div className="grid h-screen grid-flow-col grid-cols-[auto_40%]">
+    <div className="grid h-screen grid-flow-col grid-cols-[auto_40%] font-normal">
       <div className="flex flex-col h-full">
-        <div className="flex-1 text-center w-[25rem] mx-auto flex items-center justify-center flex-col">
-          <span className="block mb-2 text-[32px] leading-10 font-medium">
+        <div className="flex-1 text-center  mx-auto flex items-center justify-center flex-col">
+          <h1 className="block mb-2 text-[32px] leading-10 font-medium font-title">
             Welcome to monday.com
-          </span>
+          </h1>
           <span className="block mb-12 leading-[30px] font-normal">
             Get started - it's free. No credit card needed.
           </span>
@@ -26,18 +26,24 @@ export default function SignUp() {
               Or
               <div className="h-1/2 border border-t-[#d0d4e4] w-full"></div>
             </div>
-            <Input className="h-10" placeholder="name@company.com"></Input>
-            <Button type="primary" className="w-full bg-[#1f76c2] h-10">
+            <Input
+              className="h-10 placeholder:text-[#323338] border-[#c3c6d4]"
+              placeholder="name@company.com"></Input>
+            <Button type="primary" className="w-full bg-[#0273ea] h-10">
               Continue
             </Button>
             <div>
               <span>By proceeding, you agree to the</span>
               <div>
-                <a href="#!" className="text-[#1f76c2] hover:underline">
+                <a
+                  href="#!"
+                  className="text-[#1f76c2] hover:underlin font-medium">
                   Terms of Service
                 </a>
                 <span className="px-1">and</span>
-                <a href="#!" className="text-[#1f76c2] hover:underline">
+                <a
+                  href="#!"
+                  className="text-[#1f76c2] hover:underline font-medium">
                   Privacy Policy
                 </a>
               </div>
@@ -46,7 +52,7 @@ export default function SignUp() {
         </div>
         <div className="inline-block mb-16 text-center">
           <span className="px-1">Already have an account?</span>
-          <a href="#!" className="text-[#5e9cd3] hover:underline">
+          <a href="#!" className="text-[#5e9cd3] hover:underline font-medium">
             Log in
           </a>
         </div>
