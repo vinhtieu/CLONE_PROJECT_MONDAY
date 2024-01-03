@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --normal-font: "Figtree", "Roboto", "Noto Sans Hebrew", "Noto Kufi Arabic",
+    "Noto Sans JP", "sans-serif";
+  --title-font: "Poppins", "Roboto", "Noto Sans Hebrew", "Noto Kufi Arabic",
+    "Noto Sans JP", "sans-serif";
+  --letter-spacing-h1: "-0.5px";
+  --letter-spacing-h2: "-0.1px";
+  --letter-spacing-h3: "-0.1px";
+  --h1-style: 32px/40px var(--title-font);
+  --h2-style: 24px/30px var(--title-font);
+  --h3-style: 18px/24px var(--title-font);
+  --text1-style: 16px/22px var(--normal-font);
+  --text2-style: 14px/20px var(--normal-font);
+}
+
+@layer utilities {
+}
+
 body {
   font-size: 16px;
+  font-family: "Figtree", "Roboto", "Noto Sans Hebrew", "Noto Kufi Arabic",
+    "Noto Sans JP", "sans-serif";
 }
