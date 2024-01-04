@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Radio } from "antd";
 import "./style.css";
 
-export default function RegisterQuestion1() {
+export default function RegisterQuestionNair() {
   const [chosenRadio, setChosenRadio] = useState("");
   const [role, setRole] = useState("");
 
