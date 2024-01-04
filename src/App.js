@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import {
   Register,
   RegisterCreateAccount,
-  RegisterQuestion1,
+  RegisterQuestionNair,
 } from "./pages/register";
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <Route
             path="create_account"
             element={<RegisterCreateAccount />}></Route>
-          <Route path="question_1" element={<RegisterQuestion1 />}></Route>
+          <Route path="question_1" element={<RegisterQuestionNair />}></Route>
           {/* <Route path="user" element={<UserPage />} />
           <Route path="course" element={<CoursePage />} /> */}
         </Route>
