@@ -11,6 +11,9 @@ module.exports = {
         primary: "#0073ea",
         primaryHover: "#0060b9",
         linkWater: "#c3c6d4",
+        comet: "#676879",
+        solitude: "#ecedf5",
+        "disable-color": "rgba(50,51,56,.38)",
       },
       lineHeight: {
         7.5: "1.875rem",
@@ -103,6 +106,8 @@ module.exports = {
         ".letter-spacing-h1": { letterSpacing: "-0.5px" },
         ".letter-spacing-h2": { letterSpacing: "-0.1px" },
         ".letter-spacing-h3": { letterSpacing: "-0.1px" },
+
+        //
       };
 
       addUtilities(newUtil, ["responsive", "hover"]);
