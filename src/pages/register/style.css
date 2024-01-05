@@ -1,3 +1,7 @@
 .ant-radio-wrapper:hover .ant-radio-inner {
   border-color: #c3c6d4;
 }
+
+.ant-checkbox-wrapper {
+  margin-left: 8px;
+}

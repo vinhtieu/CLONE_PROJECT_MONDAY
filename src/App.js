@@ -13,7 +13,9 @@ function App() {
           <Route
             path="create_account"
             element={<RegisterCreateAccount />}></Route>
-          <Route path="question_1" element={<RegisterQuestionNair />}></Route>
+          <Route
+            path="question_nair"
+            element={<RegisterQuestionNair />}></Route>
           {/* <Route path="user" element={<UserPage />} />
           <Route path="course" element={<CoursePage />} /> */}
         </Route>

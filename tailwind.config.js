@@ -108,6 +108,9 @@ module.exports = {
         ".letter-spacing-h3": { letterSpacing: "-0.1px" },
 
         //
+        ".overflow-clip-content": {
+          overflowClipMargin: "content-box",
+        },
       };
 
       addUtilities(newUtil, ["responsive", "hover"]);
