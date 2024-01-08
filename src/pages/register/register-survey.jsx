@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Checkbox, Form, Input, Radio } from "antd";
 import "./style.css";
+import { useSelector } from "react-redux";
 
-export default function RegisterQuestionNair() {
+export default function RegisterSurvey() {
   const [page, setPage] = useState("1");
   const [chosenRadio, setChosenRadio] = useState("");
   const [role, setRole] = useState("");
+  const surveyData = useSelector((state) => state.surveyPage.data);
 
   const questionNairData = {
     page1: {
@@ -355,14 +357,14 @@ export default function RegisterQuestionNair() {
         </div>
         <div className="flex-[10] w-full overflow-auto">
           <div className="flex flex-col w-full gap-16">
-            {renderQuestionByPage(questionNairData, page)}
+            {renderQuestionByPage(surveyData, page)}
           </div>
         </div>
         <div className="flex-1 mt-10 w-[calc(100%+2px)] bg-white sticky bottom-0 right-0 flex justify-start items-end">
           {renderButtonsBasedOnPage(page)}
         </div>
       </div>
-      {renderImageByPage(questionNairData, page)}
+      {renderImageByPage(surveyData, page)}
     </div>
   );
 }
