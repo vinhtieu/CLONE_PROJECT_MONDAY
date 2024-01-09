@@ -1,0 +1,27 @@
+.invitation-page__inputs {
+  .ant-input {
+    @apply border border-ghost rounded-[4px] subtext placeholder:text-comet h-10 px-[.625rem] text-sm;
+  }
+  .ant-input-group-addon {
+    @apply h-[38px] w-[120px] p-0 text-left border-ghost bg-transparent;
+    .ant-select {
+      @apply m-0 relative;
+      .ant-select-selector {
+        @apply w-full p-0;
+        .ant-select-selection-item {
+          @apply p-[2px_8px_2px_12px];
+        }
+      }
+      .ant-select-arrow {
+        @apply w-8 h-8 z-10 hover:bg-moonlightBay rounded-[4px] text-mudBlack mr-[3px] absolute m-0 top-1/2 right-0 -translate-y-1/2 flex justify-center items-center;
+        .anticon {
+          @apply w-5 h-5 flex justify-center items-center;
+        }
+      }
+    }
+  }
+
+  .ant-btn {
+    @apply w-auto;
+  }
+}

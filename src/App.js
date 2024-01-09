@@ -4,6 +4,7 @@ import {
   RegisterCreateAccount,
   RegisterSurvey,
 } from "./pages/register";
+import { Invitation } from "./pages";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
             path="create_account"
             element={<RegisterCreateAccount />}></Route>
           <Route path="survey" element={<RegisterSurvey />}></Route>
+          <Route path="invitation" element={<Invitation />}></Route>
           {/* <Route path="user" element={<UserPage />} />
           <Route path="course" element={<CoursePage />} /> */}
         </Route>
