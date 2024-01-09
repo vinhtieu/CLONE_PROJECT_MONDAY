@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function Invitation() {
   const { Option } = Select;
+  const [selectedValue, setSelectedValue] = useState("");
   const [isDisabled, setIsDisabled] = useState("true");
   const [inputNumber, setInputNumber] = useState("2");
   const addInput = () => {
@@ -26,10 +27,37 @@ export default function Invitation() {
     });
   };
 
+  // const showValue = (value) => {
+  //   setSelectedValue(value);
+  //   console.log(value);
+  // };
+
+  // const showLabel = (value) => {
+  //   switch (value) {
+  //     case "admin":
+  //       return "Admin";
+  //     case "member":
+  //     default:
+  //       return "";
+  //       break;
+  //   }
+  // };
+
+  // console.log(selectedValue);
+
   const selectAfter = (
-    <Select className="w-full" defaultValue="admin">
-      <Option value="admin">Admin</Option>
-      <Option value="member">Member</Option>
+    <Select
+      className="w-full"
+      defaultValue="Admin"
+      // value={selectedValue}
+      // onChange={showValue}
+    >
+      <Option value="Admin">
+        <span>Admin</span>
+      </Option>
+      <Option value="Member">
+        <span>Member</span>
+      </Option>
     </Select>
   );
 
