@@ -7,8 +7,9 @@ import { useSelector } from "react-redux";
 
 export default function Invitation() {
   const { Option } = Select;
-  const [selectedValue, setSelectedValue] = useState("");
-  const [isDisabled, setIsDisabled] = useState("true");
+  const [isRotated, setIsRotated] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
   const [inputNumber, setInputNumber] = useState("2");
   const addInput = () => {
     const amount = +inputNumber + 1;
@@ -49,16 +50,63 @@ export default function Invitation() {
     <Select
       className="w-full"
       defaultValue="Admin"
-      // value={selectedValue}
-      // onChange={showValue}
-    >
-      <Option value="Admin">
-        <span>Admin</span>
-      </Option>
-      <Option value="Member">
-        <span>Member</span>
-      </Option>
-    </Select>
+      onClick={(e) => {
+        console.log(e.target.id);
+        const value = !isRotated;
+        setIsRotated(value);
+        setIsOpen(value);
+      }}
+      open={isOpen}
+      suffixIcon={
+        <div
+          onClick={() => {
+            const value = !isOpen;
+            setIsOpen(value);
+          }}
+          className={` ${isRotated ? "rotate-180" : "rotate-0"}`}>
+          <svg
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            width="20px"
+            height="20px"
+            role="button"
+            tabIndex="-1"
+            aria-hidden="false"
+            className=""
+            data-testid="icon">
+            <path
+              d="M10.5303 12.5303L10 12L9.46967 12.5303C9.76256 12.8232 10.2374 12.8232 10.5303 12.5303ZM10 10.9393L6.53033 7.46967C6.23744 7.17678 5.76256 7.17678 5.46967 7.46967C5.17678 7.76256 5.17678 8.23744 5.46967 8.53033L9.46967 12.5303L10 12L10.5303 12.5303L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L10 10.9393Z"
+              fill="currentColor"
+              fillRule="evenodd"
+              clipRule="evenodd"></path>
+          </svg>
+        </div>
+      }
+      options={[
+        { value: "Admin", label: "Admin" },
+        { value: "Member", label: "Member" },
+      ]}
+      optionRender={(option) => {
+        let desc;
+        switch (option.key) {
+          case "Admin":
+            desc = "Can invite & manage new users";
+            break;
+          case "Member":
+            desc = "Can add and edit contents";
+            break;
+        }
+        return (
+          <div>
+            <span className="block text-mudBlack font-normal leading-[18px]">
+              {option.key}
+            </span>
+            <span className="block whitespace-normal text-comet leading-[18px] font-normal">
+              {desc}
+            </span>
+          </div>
+        );
+      }}></Select>
   );
 
   return (
@@ -72,13 +120,13 @@ export default function Invitation() {
               width="20"
               height="20"
               aria-hidden="true"
-              class=""
+              className=""
               data-testid="icon">
               <path
                 d="M3.53033 2.46967C3.23744 2.17678 2.76256 2.17678 2.46967 2.46967C2.17678 2.76256 2.17678 3.23744 2.46967 3.53033L8.97639 10.037L2.47093 16.5425C2.17804 16.8354 2.17804 17.3103 2.47093 17.6032C2.76382 17.8961 3.2387 17.8961 3.53159 17.6032L10.037 11.0977L16.5425 17.6032C16.8354 17.8961 17.3103 17.8961 17.6032 17.6032C17.8961 17.3103 17.8961 16.8354 17.6032 16.5425L11.0977 10.037L17.6044 3.53033C17.8973 3.23744 17.8973 2.76256 17.6044 2.46967C17.3115 2.17678 16.8367 2.17678 16.5438 2.46967L10.037 8.97639L3.53033 2.46967Z"
                 fill="currentColor"
-                fill-rule="evenodd"
-                clip-rule="evenodd"></path>
+                fillRule="evenodd"
+                clipRule="evenodd"></path>
             </svg>
             {/* <img src="src\assets\cross.svg" alt="" className="w-6 h-6" /> */}
           </button>
@@ -111,29 +159,32 @@ export default function Invitation() {
             <Form.List className={"mb-2"} name="emails">
               {(fields, { add, remove }) => (
                 <>
-                  {fields.map(({ key, name, ...restField }) => (
-                    <Space
-                      key={key}
-                      style={{
-                        display: "block",
-                        width: "100%",
-                      }}
-                      className="mb-2"
-                      align="baseline">
-                      <Form.Item
-                        {...restField}
-                        name={[name, "first"]}
-                        className="mb-2">
-                        <Input
-                          className=""
-                          addonAfter={selectAfter}
-                          placeholder="Add email here"
-                        />
-                      </Form.Item>
-
-                      {/* <MinusCircleOutlined onClick={() => remove(name)} /> */}
-                    </Space>
-                  ))}
+                  {fields.map(({ key, name, ...restField }) => {
+                    console.log(key);
+                    return (
+                      <Space
+                        key={key}
+                        style={{
+                          display: "block",
+                          width: "100%",
+                        }}
+                        className="mb-2"
+                        align="baseline">
+                        <Form.Item
+                          {...restField}
+                          name={[name, "first"]}
+                          className="mb-2">
+                          <Input
+                            key={key}
+                            id={key}
+                            className={""}
+                            addonAfter={selectAfter(key)}
+                            placeholder="Add email here"
+                          />
+                        </Form.Item>
+                      </Space>
+                    );
+                  })}
                   <Form.Item>
                     <Button
                       type="dashed"

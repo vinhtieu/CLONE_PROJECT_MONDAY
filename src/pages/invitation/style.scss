@@ -21,11 +21,9 @@
         }
       }
       .ant-select-arrow {
-        @apply w-8 h-8 z-50  rounded-[4px] text-mudBlack mr-[3px] absolute m-0 top-1/2 right-0 -translate-y-1/2 flex justify-center items-center;
+        pointer-events: fill;
+        @apply w-8 h-8 z-50  hover:bg-moonlightBay rounded-[4px] text-mudBlack mr-[3px] absolute m-0 top-1/2 right-0 -translate-y-1/2 flex justify-center items-center;
 
-        &:hover {
-          @apply bg-moonlightBay rotate-180;
-        }
         .anticon {
           @apply w-5 h-5 flex justify-center items-center;
         }
@@ -35,5 +33,12 @@
 
   .ant-btn {
     @apply w-auto;
+  }
+}
+
+.ant-select-dropdown {
+  @apply py-1 max-h-[300px] px-0;
+  .ant-select-item {
+    @apply p-2 mx-2 my-0 hover:bg-moonlightBay;
   }
 }
