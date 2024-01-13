@@ -63,7 +63,9 @@ export default function Invitation() {
             const value = !isOpen;
             setIsOpen(value);
           }}
-          className={` ${isRotated ? "rotate-180" : "rotate-0"}`}>
+          className={` ${
+            isRotated ? "rotate-180" : "rotate-0"
+          } transition-transform duration-100 ease-in-out transform`}>
           <svg
             viewBox="0 0 20 20"
             fill="currentColor"
