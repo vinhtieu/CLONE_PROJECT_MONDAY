@@ -16,6 +16,10 @@ module.exports = {
         solitude: "#ecedf5",
         "disable-color": "rgba(50,51,56,.38)",
         ghost: "#c5c7d0",
+        hawkesBlue: "#F6F7FB",
+        mayaBlue: "#579BFC",
+        darkPastelGreen: "#00C875",
+        wolfGray: "#d0d4e4",
       },
       lineHeight: {
         7.5: "1.875rem",

@@ -4,7 +4,7 @@ import {
   RegisterCreateAccount,
   RegisterSurvey,
 } from "./pages/register";
-import { Invitation } from "./pages";
+import { CreateYourBoard, Invitation } from "./pages";
 function App() {
   return (
     <>
@@ -18,6 +18,7 @@ function App() {
           <Route path="invitation" element={<Invitation />}></Route>
           {/* <Route path="user" element={<UserPage />} />
           <Route path="course" element={<CoursePage />} /> */}
+          <Route path="create_your_board" element={<CreateYourBoard />}></Route>
         </Route>
       </Routes>
     </>
