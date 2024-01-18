@@ -20,6 +20,10 @@ module.exports = {
         mayaBlue: "#579BFC",
         darkPastelGreen: "#00C875",
         wolfGray: "#d0d4e4",
+        skyBlue: "#66ccff",
+        yellowGreen: "#9CD326",
+        tangerine: "#FFCB00",
+        mediumPurple: "#A25DDC",
       },
       lineHeight: {
         7.5: "1.875rem",

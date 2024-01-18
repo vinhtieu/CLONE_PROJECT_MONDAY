@@ -1,8 +1,23 @@
 .create-your-board-page {
-  .ant-btn {
+  .closeBtn {
     &:hover {
-      color: #323338 !important;
-      border-color: #323338 !important;
+      @apply border-mudBlack text-mudBlack #{!important};
     }
+  }
+
+  .nextBtn {
+    &:hover {
+      @apply bg-primaryHover text-white border-none #{!important};
+    }
+    &:disabled:hover {
+      @apply bg-solitude text-disable-color #{!important};
+    }
+  }
+  .selectOption {
+    @apply hover:border-linkWater hover:text-mudBlack;
+  }
+
+  .ant-input-clear-icon {
+    @apply w-8 h-8 rounded text-comet hover:bg-moonlightBay transition-colors duration-[70] [transition-timing-function:cubic-bezier(0,0,0.35,1)] flex justify-center items-center absolute right-[5px] top-1/2 -translate-y-1/2 #{!important};
   }
 }
