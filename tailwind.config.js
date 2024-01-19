@@ -112,9 +112,14 @@ module.exports = {
           font: "700 var(--text2-style)",
         },
 
+        //normal-text3
+        ".normal-text-3": {
+          font: "400 var(--text3-style)",
+        },
+
         //
         ".subtext": {
-          fontSize: "14px",
+          font: "400 var(--subtext)",
         },
 
         //letter-spacing
