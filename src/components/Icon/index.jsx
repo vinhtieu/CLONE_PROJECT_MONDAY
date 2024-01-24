@@ -1,0 +1,16 @@
+export { default as ArrowIcon } from "./arrowIcon.jsx";
+export { default as BarsStaggeredIcon } from "./barsStaggeredIcon.jsx";
+export { default as CalendarIcon } from "./calendarIcon.jsx";
+export { default as CardIcon } from "./cardIcon.jsx";
+export { default as KanbanIcon } from "./kanbanIcon.jsx";
+export { default as LeftBarsStaggeredIcon } from "./leftBarsStaggeredIcon.jsx";
+export { default as PlusIcon } from "./plusIcon.jsx";
+export { default as TableIcon } from "./tableIcon.jsx";
+export { default as X_Icon } from "./xIcon.jsx";
+export { default as FileIcon } from "./fileIcon.jsx";
+export { default as NumberIcon } from "./numberIcon.jsx";
+export { default as T_Icon } from "./tIcon.jsx";
+export { default as ClockIcon } from "./clockIcon.jsx";
+export { default as TriangleIcon } from "./triangleIcon.jsx";
+export { default as PersonIcon } from "./personIcon.jsx";
+export { default as XMark } from "./xMark.jsx";

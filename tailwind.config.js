@@ -24,6 +24,12 @@ module.exports = {
         yellowGreen: "#9CD326",
         tangerine: "#FFCB00",
         mediumPurple: "#A25DDC",
+        slateBlue: "#784BD1",
+        sinYellow: "#FCAB3F",
+        roseRed: "#FAA1F1",
+        royalBlue: "#2B76E5",
+        waterCourseGreen: "#037F4C",
+        sorbusOrange: "#E1642E",
       },
       lineHeight: {
         7.5: "1.875rem",
