@@ -21,4 +21,11 @@
   .ant-input-clear-icon {
     @apply w-8 h-8 rounded text-comet hover:bg-moonlightBay transition-colors duration-[70] [transition-timing-function:cubic-bezier(0,0,0.35,1)] flex justify-center items-center absolute right-[5px] top-1/2 -translate-y-1/2 #{!important};
   }
+
+  .ant-switch {
+    @apply bg-linkWater hover:bg-linkWater;
+  }
+  .ant-switch-checked {
+    @apply bg-primary hover:bg-primary;
+  }
 }

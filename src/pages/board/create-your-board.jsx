@@ -25,7 +25,7 @@ import {
   PersonIcon,
   TriangleIcon,
 } from "../../components/Icon";
-import CustomInput from "../../components";
+import { CustomInput, ToggleBox } from "../../components";
 
 export default function CreateYourBoard() {
   const [boardName, setBoardName] = useState("");
@@ -82,46 +82,22 @@ export default function CreateYourBoard() {
               disabled={isDisabled}
               className="flex flex-row items-center h-10 px-4 py-2 text-white border-none rounded nextBtn normal-text-1_base bg-primary disabled:bg-solitude disabled:text-disable-color">
               Next
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                width="20px"
-                height="20px"
-                role="button"
-                tabIndex="-1"
-                aria-hidden="false"
-                className="ml-2 -rotate-90"
-                data-testid="icon">
-                <path
-                  d="M10.5303 12.5303L10 12L9.46967 12.5303C9.76256 12.8232 10.2374 12.8232 10.5303 12.5303ZM10 10.9393L6.53033 7.46967C6.23744 7.17678 5.76256 7.17678 5.46967 7.46967C5.17678 7.76256 5.17678 8.23744 5.46967 8.53033L9.46967 12.5303L10 12L10.5303 12.5303L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L10 10.9393Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  clipRule="evenodd"></path>
-              </svg>
+              <ArrowIcon className={"ml-2 -rotate-90"} />
             </Button>
           </div>
         );
       case "6":
         return (
-          <div className="flex flex-row-reverse">
+          <div className="flex flex-row-reverse justify-between">
             <Button className="flex flex-row items-center h-10 px-4 py-2 text-white border-none rounded nextBtn normal-text-1_base bg-primary disabled:bg-solitude disabled:text-disable-color">
               Get started
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                width="20px"
-                height="20px"
-                role="button"
-                tabIndex="-1"
-                aria-hidden="false"
-                className="ml-2 -rotate-90"
-                data-testid="icon">
-                <path
-                  d="M10.5303 12.5303L10 12L9.46967 12.5303C9.76256 12.8232 10.2374 12.8232 10.5303 12.5303ZM10 10.9393L6.53033 7.46967C6.23744 7.17678 5.76256 7.17678 5.46967 7.46967C5.17678 7.76256 5.17678 8.23744 5.46967 8.53033L9.46967 12.5303L10 12L10.5303 12.5303L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L10 10.9393Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  clipRule="evenodd"></path>
-              </svg>
+            </Button>
+            <Button
+              onClick={toPrevPage}
+              disabled={isDisabled}
+              className="flex flex-row items-center h-10 px-4 py-2 border rounded border-linkWater hover:!border-linkWater normal-text-1_base hover:bg-moonlightBay text-mudBlack hover:!text-mudBlack disabled:bg-solitude disabled:text-disable-color">
+              <ArrowIcon className={"mr-2 rotate-90"} />
+              Back
             </Button>
           </div>
         );
@@ -132,22 +108,7 @@ export default function CreateYourBoard() {
               onClick={toPrevPage}
               disabled={isDisabled}
               className="flex flex-row items-center h-10 px-4 py-2 border rounded border-linkWater hover:!border-linkWater normal-text-1_base hover:bg-moonlightBay text-mudBlack hover:!text-mudBlack disabled:bg-solitude disabled:text-disable-color">
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                width="20px"
-                height="20px"
-                role="button"
-                tabIndex="-1"
-                aria-hidden="false"
-                className="mr-2 rotate-90"
-                data-testid="icon">
-                <path
-                  d="M10.5303 12.5303L10 12L9.46967 12.5303C9.76256 12.8232 10.2374 12.8232 10.5303 12.5303ZM10 10.9393L6.53033 7.46967C6.23744 7.17678 5.76256 7.17678 5.46967 7.46967C5.17678 7.76256 5.17678 8.23744 5.46967 8.53033L9.46967 12.5303L10 12L10.5303 12.5303L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L10 10.9393Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  clipRule="evenodd"></path>
-              </svg>
+              <ArrowIcon className={"mr-2 rotate-90"} />
               Back
             </Button>
             <Button
@@ -155,22 +116,7 @@ export default function CreateYourBoard() {
               disabled={isDisabled}
               className="flex flex-row items-center h-10 px-4 py-2 text-white border-none rounded nextBtn normal-text-1_base bg-primary disabled:bg-solitude disabled:text-disable-color">
               Next
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                width="20px"
-                height="20px"
-                role="button"
-                tabIndex="-1"
-                aria-hidden="false"
-                className="ml-2 -rotate-90"
-                data-testid="icon">
-                <path
-                  d="M10.5303 12.5303L10 12L9.46967 12.5303C9.76256 12.8232 10.2374 12.8232 10.5303 12.5303ZM10 10.9393L6.53033 7.46967C6.23744 7.17678 5.76256 7.17678 5.46967 7.46967C5.17678 7.76256 5.17678 8.23744 5.46967 8.53033L9.46967 12.5303L10 12L10.5303 12.5303L14.5303 8.53033C14.8232 8.23744 14.8232 7.76256 14.5303 7.46967C14.2374 7.17678 13.7626 7.17678 13.4697 7.46967L10 10.9393Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  clipRule="evenodd"></path>
-              </svg>
+              <ArrowIcon className={"ml-2 -rotate-90"} />
             </Button>
           </div>
         );
@@ -519,9 +465,43 @@ flex items-center justify-start h-10 p-2  rounded selectOption hover:bg-moonligh
             </>
           );
         case "5":
-          return <></>;
+          return (
+            <>
+              <CustomInput value={"Project 1"}></CustomInput>
+              <CustomInput value={"Project 2"}></CustomInput>
+              <CustomInput value={"Project 3"}></CustomInput>
+            </>
+          );
         case "6":
-          return <div>text</div>;
+          return (
+            <>
+              <ToggleBox
+                content={
+                  <p>
+                    When <strong>status</strong> changes to
+                    <strong> done </strong> move item to
+                    <strong> completed</strong>
+                  </p>
+                }
+              />
+              <ToggleBox
+                content={
+                  <p>
+                    When <strong>due date</strong> arrives
+                    <strong> notify me</strong>
+                  </p>
+                }
+              />
+              <ToggleBox
+                content={
+                  <p>
+                    when <strong>status</strong> changes
+                    <strong> notify me</strong>
+                  </p>
+                }
+              />
+            </>
+          );
         default:
           break;
       }
@@ -616,7 +596,23 @@ flex items-center justify-start h-10 p-2  rounded selectOption hover:bg-moonligh
                 </h1>
               </div>
               <div className={`flex flex-wrap mt-4 flex-start gap-y-4 gap-x-2`}>
-                {generateOptions(page, data.pages[index].options, index)}
+                {generateOptions(page, data.pages[index], index)}
+              </div>
+            </>
+          );
+        case "6":
+          return (
+            <>
+              <div className="w-full mb-6">
+                <h1 className="block heading-2_normal letter-spacing-h2 text-mudBlack">
+                  {title}
+                </h1>
+                <h6 className="block mt-2 normal-text-3 text-mudBlack">
+                  {subtitle}
+                </h6>
+              </div>
+              <div className={`flex flex-wrap flex-start`}>
+                {generateOptions(page, data.pages[index], index)}
               </div>
             </>
           );
