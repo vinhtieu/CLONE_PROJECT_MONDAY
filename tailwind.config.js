@@ -30,6 +30,9 @@ module.exports = {
         royalBlue: "#2B76E5",
         waterCourseGreen: "#037F4C",
         sorbusOrange: "#E1642E",
+        cerise: "#e1445c",
+        dimGray: "#666",
+        persianIndigo: "#401694",
       },
       lineHeight: {
         7.5: "1.875rem",
@@ -125,7 +128,7 @@ module.exports = {
 
         //
         ".subtext": {
-          font: "400 var(--subtext)",
+          font: "400 var(--subtext-style)",
         },
 
         //letter-spacing

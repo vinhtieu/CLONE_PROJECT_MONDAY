@@ -1,2 +1,2 @@
 export { default as surveyPageSlice } from "./surveyPageSlice";
-export { default as customTableSlice } from "./customTableSlice";
+export { default as previewTableSlice } from "./previewTableSlice";

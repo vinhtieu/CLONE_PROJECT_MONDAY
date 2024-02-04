@@ -142,9 +142,8 @@ const initialState = {
       },
     ],
   },
-  customData: {
-    heading: "",
-    columns: [],
+  data: {
+    boardName: "",
     items: "",
     viewLayout: "",
     tasks: [],
@@ -152,23 +151,34 @@ const initialState = {
   },
 };
 
-const dummyTableSlice = createSlice({
-  name: "customTable",
+const previewTableSlice = createSlice({
+  name: "previewTable",
   initialState,
   reducers: {
     addColumns: (state, action) => {
-      state.customData.columns.push(action.payload);
+      state.data.columns.push(action.payload);
     },
     deleteColumns: (state, action) => {
-      state.customData.columns.splice(action.payload, 1);
+      state.data.columns.splice(action.payload, 1);
     },
     selectViewLayout: (state, action) => {
-      state.customData.viewLayout = action.payload;
+      state.data.viewLayout = action.payload;
+    },
+    setBoardName: (state, action) => {
+      state.data.boardName = action.payload;
+    },
+    setItems: (state, action) => {
+      state.data.items = action.payload;
     },
   },
 });
 
-export const { addColumns, deleteColumns, selectViewLayout } =
-  dummyTableSlice.actions;
+export const {
+  addColumns,
+  deleteColumns,
+  setBoardName,
+  selectViewLayout,
+  setItems,
+} = previewTableSlice.actions;
 
-export default dummyTableSlice.reducer;
+export default previewTableSlice.reducer;

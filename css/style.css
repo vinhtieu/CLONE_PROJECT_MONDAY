@@ -1,0 +1,32 @@
+.invitation-page__inputs .ant-input {
+  @apply border border-ghost rounded-[4px] subtext placeholder:text-comet h-10 px-[.625rem] text-sm;
+}
+.invitation-page__inputs .ant-input-group-addon {
+  @apply h-[38px] w-[120px] p-0 text-left border-ghost bg-transparent;
+}
+.invitation-page__inputs .ant-input-group-addon .ant-select {
+  @apply m-0 relative;
+}
+.invitation-page__inputs .ant-input-group-addon .ant-select .ant-select-selector {
+  @apply w-full p-0;
+}
+.invitation-page__inputs .ant-input-group-addon .ant-select .ant-select-selector .ant-select-selection-item {
+  @apply p-[2px_8px_2px_12px];
+}
+.invitation-page__inputs .ant-input-group-addon .ant-select .ant-select-arrow {
+  pointer-events: fill;
+  @apply w-8 h-8 z-50  hover:bg-moonlightBay rounded-[4px] text-mudBlack mr-[3px] absolute m-0 top-1/2 right-0 -translate-y-1/2 flex justify-center items-center;
+}
+.invitation-page__inputs .ant-input-group-addon .ant-select .ant-select-arrow .anticon {
+  @apply w-5 h-5 flex justify-center items-center;
+}
+.invitation-page__inputs .ant-btn {
+  @apply w-auto;
+}
+
+.ant-select-dropdown {
+  @apply py-1 max-h-[300px] px-0;
+}
+.ant-select-dropdown .ant-select-item {
+  @apply p-2 mx-2 my-0 hover:bg-moonlightBay;
+}/*# sourceMappingURL=style.css.map */

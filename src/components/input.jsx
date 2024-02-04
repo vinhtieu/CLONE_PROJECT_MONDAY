@@ -3,6 +3,8 @@ import { Input } from "antd";
 import { XMark } from "./Icon";
 
 function CustomInput({
+  id,
+  name,
   className,
   placeHolder,
   onChangeEvent = () => {},
@@ -10,6 +12,8 @@ function CustomInput({
 }) {
   return (
     <Input
+      id={id}
+      name={name}
       allowClear={{
         clearIcon: <XMark />,
       }}
