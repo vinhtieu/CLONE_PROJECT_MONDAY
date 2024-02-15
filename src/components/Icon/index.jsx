@@ -20,3 +20,5 @@ export { default as WarningCircleIcon } from "./warningCircleIcon.jsx";
 export { default as WarningIcon } from "./warningIcon.jsx";
 export { default as CheckIcon } from "./checkIcon.jsx";
 export { default as CheckCircleIcon } from "./checkCircleIcon.jsx";
+export { default as PlusCircle } from "./plusCircle.jsx";
+export { default as PlusComment } from "./plusComment.jsx";

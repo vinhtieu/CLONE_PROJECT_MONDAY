@@ -8,7 +8,7 @@ import {
   selectViewLayout,
   setHeading,
 } from "../../redux/slices/previewTableSlice";
-import { Table } from "../../components";
+import { Board, Table } from "../../components";
 
 import {
   WarningIcon,
@@ -28,25 +28,21 @@ import {
   ClockIcon,
   PersonIcon,
   TriangleIcon,
-  HorizontalBar,
-  PlaceholderAva,
-  CheckIcon,
-  CheckCircleIcon,
 } from "../../components/Icon";
-import { CustomInput, ToggleBox } from "../../components";
-import { capitalizedFirstLetter, useCompare, usePrevious } from "../../utils";
+import { CustomInput, ToggleBox, Card } from "../../components";
+import { capitalizedFirstLetter } from "../../utils";
 
 export default function CreateYourBoard() {
   const [boardName, setBoardName] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  const [itemValue, setItemValue] = useState("");
-  const [item1, setItem1] = useState({});
-  const [item2, setItem2] = useState({});
-  const [item3, setItem3] = useState({});
-  const [firstColumn, setFirstColumn] = useState("");
+  const [viewLayout, setViewLayout] = useState("");
+  const [item1, setItem1] = useState({ id: "", value: "" });
+  const [item2, setItem2] = useState({ id: "", value: "" });
+  const [item3, setItem3] = useState({ id: "", value: "" });
+  const [firstColumnLabel, setFirstColumnLabel] = useState();
   const [selectedColumns, setSelectedColumns] = useState([]);
 
-  const [columnData, setColumnData] = useState({ label: "", dataIndex: "" });
+  const [columnData, setColumnData] = useState();
   const [tableData, setTableData] = useState({});
   const [pageNum, setPageNum] = useState("1");
   const inquiries = useSelector((state) => state.previewTable.designInquiries);
@@ -54,17 +50,15 @@ export default function CreateYourBoard() {
   const dispatch = useDispatch();
 
   const handleSelectColumn = (column) => {
-    const label = capitalizedFirstLetter(column);
+    const label = capitalizedFirstLetter(column).replace("-", " ");
     const dataIndex = column;
     const updatedData = { label: label, dataIndex: dataIndex };
     setColumnData(updatedData);
 
     setSelectedColumns((prevData) => {
       const isExisted = prevData.includes(column);
-      console.log("isExisted: ", isExisted);
 
       if (isExisted) {
-        console.log("prevData: ", prevData);
         if (prevData.length > 1) {
           const deleteIndex = prevData.indexOf(column);
           const newData = [...prevData];
@@ -81,25 +75,29 @@ export default function CreateYourBoard() {
 
   const handleSelectViewLayout = (layout) => {
     const value = layout.toLowerCase();
-    dispatch(selectViewLayout(value));
+    setViewLayout(value);
   };
 
   const handleSelectRadio = (value) => {
     let labelValue = capitalizedFirstLetter(value);
-    setFirstColumn({ label: labelValue, dataIndex: value });
+    setFirstColumnLabel(labelValue);
   };
 
   const handleListItems = (name, value) => {
-    switch (name) {
-      case "input-f2mXiahpII7Mc8jq":
-        setItem1({ id: "A1", value: value });
-        break;
-      case "input-xZTqSVj3ycDp3Y6u":
-        setItem2({ id: "A2", value: value });
-        break;
-      case "input-Vw7GDd4ZuK9kTz9C":
-        setItem3({ id: "A3", value: value });
-        break;
+    if (value) {
+      switch (name) {
+        case "input-f2mXiahpII7Mc8jq":
+          setItem1({ id: "A1", value: value });
+          break;
+        case "input-xZTqSVj3ycDp3Y6u":
+          setItem2({ id: "A2", value: value });
+          break;
+        case "input-Vw7GDd4ZuK9kTz9C":
+          setItem3({ id: "A3", value: value });
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -172,94 +170,6 @@ export default function CreateYourBoard() {
     }
   };
 
-  // const renderTable-ByRow = (numCol, numRow, color) => {
-  //   let tableCells = [];
-  //   let tableCell;
-
-  //   const generateContent = (col, row, colLength, rowLength) => {
-  //     if (col === 0) return "w-[70%]";
-
-  //     if (col === colLength || row === rowLength) return "";
-
-  //     return "w-[30%]";
-  //   };
-
-  //   const generateIcon = (col, row, colLength) => {
-  //     if (col === colLength && row === 0) {
-  //       return (
-  //         <svg
-  //           viewBox="0 0 20 20"
-  //           fill="currentColor"
-  //           width={16}
-  //           height={16}
-  //           aria-hidden="true"
-  //           className="mx-3"
-  //           data-testid="icon"
-  //           style={{ color: "var(--color-asphalt_grey)" }}>
-  //           <path
-  //             d="M10.75 3C10.75 2.58579 10.4142 2.25 10 2.25C9.58579 2.25 9.25 2.58579 9.25 3V9.25H3C2.58579 9.25 2.25 9.58579 2.25 10C2.25 10.4142 2.58579 10.75 3 10.75H9.25V17C9.25 17.4142 9.58579 17.75 10 17.75C10.4142 17.75 10.75 17.4142 10.75 17V10.75H17C17.4142 10.75 17.75 10.4142 17.75 10C17.75 9.58579 17.4142 9.25 17 9.25H10.75V3Z"
-  //             fill="currentColor"
-  //             fillRule="evenodd"
-  //             clipRule="evenodd"
-  //           />
-  //         </svg>
-  //       );
-  //     }
-  //     return <></>;
-  //   };
-
-  //   const generateCss = (col, color) => {
-  //     if (col === 0) {
-  //       return {
-  //         gridColumn: `${+col + 1}`,
-  //         borderLeft: `6px solid ${color}`,
-  //       };
-  //     }
-
-  //     return { gridColumn: `${+col + 1}` };
-  //   };
-
-  //   const generateCellStyle = (col, row, rowLength) => {
-  //     if (col === 0) {
-  //       if (row === 0) {
-  //         return `rounded-tl-[8px] px-6 !justify-start border-wolfGray border-t-solid border-t-[1px]`;
-  //       }
-  //       if (row === rowLength) {
-  //         return `rounded-bl-[8px] px-6 !justify-start border-wolfGray border-solid border-t-[1px]  border-b-[1px] opacity-50`;
-  //       }
-
-  //       return "px-6 !justify-start border-wolfGray border-solid border-t-[1px]";
-  //     } else {
-  //       if (row === rowLength) {
-  //         return `border-wolfGray border-solid  !border-b-[1px] !border-t-[1px] !border-r-0 opacity-50`;
-  //       } else {
-  //         return "border-wolfGray border-solid !border-t-[1px] border-b-0 border-l-[1px]";
-  //       }
-  //     }
-  //   };
-
-  //   for (let row = 0, rowLength = numRow; row <= rowLength; row++) {
-  //     for (let col = 0, colLength = numCol; col <= colLength; col++) {
-  //       const content = generateContent(col, row, colLength, rowLength);
-  //       const icon = generateIcon(col, row, colLength);
-  //       const inlineCss = generateCss(col, color);
-  //       const twClass = generateCellStyle(col, row, rowLength);
-  //       tableCell = (
-  //         <div
-  //           key={`${row},${col}`}
-  //           style={inlineCss}
-  //           className={`h-9 flex justify-center items-center w-full ${twClass}`}>
-  //           <div className={`rounded-lg h-1 bg-linkWater  ${content}`}></div>
-  //           {icon}
-  //         </div>
-  //       );
-
-  //       tableCells.push(tableCell);
-  //     }
-  //   }
-  //   return tableCells;
-  // };
-
   const renderLivePreview = (data) => {
     const generateGridLayout = (cols) => {
       let value = "";
@@ -291,6 +201,93 @@ export default function CreateYourBoard() {
       );
     };
 
+    const handleViewLayout = (layout) => {
+      console.log(layout);
+      switch (layout) {
+        case "table":
+          return (
+            <div
+              style={generateGridLayout(selectedColumns)}
+              className={"overflow-auto w-full"}>
+              <div
+                style={{ gridColumn: "1" }}
+                className="flex items-center mb-2 h-9">
+                <div className=" bg-[rgb(87,155,252)] w-[70%] h-[6px] rounded-lg col-span-full"></div>
+              </div>
+              <Table
+                row={4}
+                col={4}
+                color="#579BFC"
+                dummyColumns={columnData}
+                itemTitle={firstColumnLabel}
+                data={[item1, item2, item3]}
+              />
+              <div
+                style={{ gridColumn: "1" }}
+                className="flex items-center mt-6 mb-2 h-9">
+                <div className=" bg-[#00c875] w-[70%] h-[6px] rounded-lg"></div>
+              </div>
+              <Table
+                row={1}
+                col={4}
+                color="#00c875"
+                dummyColumns={columnData}
+                itemTitle={firstColumnLabel}
+              />
+            </div>
+          );
+        case "timeline":
+          break;
+        case "gantt":
+          break;
+        case "calendar":
+          break;
+        case "cards":
+          return (
+            <div className="mr-8 overflow-auto">
+              <div className="grid grid-flow-col  grid-cols-[repeat(2,minmax(125px,250px))] mt-2 gap-x-12 overflow-auto">
+                <Card />
+                <Card />
+              </div>
+            </div>
+          );
+        case "kanban":
+          break;
+        default:
+          return (
+            <div
+              style={generateGridLayout(selectedColumns)}
+              className={"overflow-auto w-full"}>
+              <div
+                style={{ gridColumn: "1" }}
+                className="flex items-center mb-2 h-9">
+                <div className=" bg-[rgb(87,155,252)] w-[70%] h-[6px] rounded-lg col-span-full"></div>
+              </div>
+              <Table
+                row={4}
+                col={4}
+                color="#579BFC"
+                dummyColumns={columnData}
+                itemTitle={firstColumnLabel}
+                data={[item1, item2, item3]}
+              />
+              <div
+                style={{ gridColumn: "1" }}
+                className="flex items-center mt-6 mb-2 h-9">
+                <div className=" bg-[#00c875] w-[70%] h-[6px] rounded-lg"></div>
+              </div>
+              <Table
+                row={1}
+                col={4}
+                color="#00c875"
+                dummyColumns={columnData}
+                itemTitle={firstColumnLabel}
+              />
+            </div>
+          );
+      }
+    };
+
     return (
       <>
         <div className=" h-[551px] w-[90%] [filter:drop-shadow(-10px_10px_30px_rgba(29,140,242,.3))] bg-white flex flex-col  drop-shadow transition-transform ease-in-out  duration-200 pt-8 pl-8 absolute top-1/2 right-0 -translate-y-1/2 shadow-[0px_4px_6px_-4px_rgba(0, 0, 0, 0.1)]">
@@ -300,36 +297,7 @@ export default function CreateYourBoard() {
             </div>
             <div className="h-[42px] mt-2 mr-8 mb-4"></div>
           </div>
-          <div
-            style={generateGridLayout(selectedColumns)}
-            className={"overflow-auto w-full"}>
-            <div
-              style={{ gridColumn: "1" }}
-              className="flex items-center mb-2 h-9">
-              <div className=" bg-[rgb(87,155,252)] w-[70%] h-[6px] rounded-lg col-span-full"></div>
-            </div>
-            <Table
-              row={4}
-              col={4}
-              color="#579BFC"
-              // presetColumns={selectedColumns}
-              column={columnData}
-              data={""}
-              // firstCatagory={itemValue}
-            />
-            <div
-              style={{ gridColumn: "1" }}
-              className="flex items-center mt-6 mb-2 h-9">
-              <div className=" bg-[#00c875] w-[70%] h-[6px] rounded-lg"></div>
-            </div>
-            {/* <Table
-              row={1}
-              col={4}
-              color="#00c875"
-              // presetColumns={selectedColumns}
-              // firstCatagory={itemValue}
-            /> */}
-          </div>
+          {handleViewLayout(viewLayout)}
         </div>
       </>
     );
@@ -473,6 +441,7 @@ export default function CreateYourBoard() {
                       <Button
                         name={option.value}
                         onClick={() => {
+                          console.log(option.value);
                           handleSelectColumn(option.value);
                         }}
                         className={`${
@@ -499,11 +468,11 @@ export default function CreateYourBoard() {
                 return (
                   <Radio
                     key={i}
-                    value={option.value}
-                    checked={firstColumn.dataIndex === option.value}
+                    value={option.label}
+                    checked={firstColumnLabel === option.label}
                     onChange={() => {
                       // setItemValue(option.value);
-                      handleSelectRadio(option.value, tableData);
+                      handleSelectRadio(option.label, tableData);
                     }}
                     className="flex items-center h-8 normal-text-2_base text-mudBlack">
                     {option.label}
@@ -512,15 +481,15 @@ export default function CreateYourBoard() {
               })}
               {
                 <Radio
-                  value={firstColumn.dataIndex}
+                  value={firstColumnLabel}
                   checked={
-                    firstColumn.dataIndex !== "projects" &&
-                    firstColumn.dataIndex !== "tasks"
+                    firstColumnLabel !== "Projects" &&
+                    firstColumnLabel !== "Tasks"
                   }
                   className="h-8">
                   <Input
                     onClick={() => {
-                      setFirstColumn("");
+                      setFirstColumnLabel("");
                     }}
                     onChange={(e) => {
                       handleSelectRadio(e.target.value, tableData);
@@ -540,10 +509,11 @@ export default function CreateYourBoard() {
                     <Button
                       name={object.value}
                       onClick={() => {
+                        console.log(object.value);
                         handleSelectViewLayout(object.value);
                       }}
                       className={`${
-                        table.viewLayout === object.value
+                        viewLayout === object.value
                           ? "!border-2 !border-primary hover:!border-primary"
                           : "!border !border-solid !border-linkWater"
                       }
@@ -564,23 +534,23 @@ flex items-center justify-start h-10 p-2  rounded selectOption hover:bg-moonligh
               <CustomInput
                 name={"item1"}
                 id={"input-f2mXiahpII7Mc8jq"}
-                value={item1.value}
+                value={item1?.value || ""}
                 onChangeEvent={(e) => {
-                  handleListItems(e.target.name, e.target.value);
+                  handleListItems(e.target.id, e.target.value);
                 }}></CustomInput>
               <CustomInput
                 name={"item2"}
                 id={"input-xZTqSVj3ycDp3Y6u"}
-                value={item2.value}
+                value={item2?.value}
                 onChangeEvent={(e) => {
-                  handleListItems(e.target.name, e.target.value);
+                  handleListItems(e.target.id, e.target.value);
                 }}></CustomInput>
               <CustomInput
                 name={"item3"}
                 id={"input-Vw7GDd4ZuK9kTz9C"}
-                value={item3.value}
+                value={item3?.value}
                 onChangeEvent={(e) => {
-                  handleListItems(e.target.name, e.target.value);
+                  handleListItems(e.target.id, e.target.value);
                 }}></CustomInput>
             </>
           );
@@ -777,6 +747,12 @@ flex items-center justify-start h-10 p-2  rounded selectOption hover:bg-moonligh
             </svg>
           </Button>
           {renderLivePreview(table)}
+          <Board
+            name={boardName}
+            layout={viewLayout}
+            dummyColumns={columnData}
+            itemTitle={firstColumnLabel}
+            itemList={[item1, item2, item3]}></Board>
         </div>
       </div>
     </div>

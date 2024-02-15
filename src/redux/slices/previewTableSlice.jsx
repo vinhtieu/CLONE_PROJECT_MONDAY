@@ -144,9 +144,7 @@ const initialState = {
   },
   data: {
     boardName: "",
-    items: "",
     viewLayout: "",
-    tasks: [],
     automation: {},
   },
 };
